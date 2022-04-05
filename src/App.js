@@ -7,7 +7,7 @@ function App() {
   return (
     <>
 
-      <div className='pp'>
+      <div className='pp'> 
         <section id="head" class="w-full px-8 text-black-700 bg-none">
           <div class="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
             <div class="relative flex flex-col md:flex-row">
@@ -25,7 +25,7 @@ function App() {
 
 
         <section class="flex items-center justify-center py-10 text-white bg-none sm:py-16 md:py-24 lg:py-32">
-          <div class="relative max-w-3xl px-10 text-center text-white auto lg:px-0" style={{marginRight:"70px"}}>
+          <div class="relative max-w-3xl px-10 text-center text-white auto lg:px-0">
             <div class="flex flex-col w-full md:flex-row"
             >
  
@@ -37,7 +37,7 @@ function App() {
               </div>
 
               <div >
-                <img src="https://i.gifer.com/Hihj.gif" class="object-cover mt-3 mr-5 h-80 lg:h-96" style={{ marginLeft: "250px" }} />
+                <img src="https://i.gifer.com/Hihj.gif" class="object-cover mt-3 mr-5 h-80 lg:h-96" />
               </div>
             </div>
 
