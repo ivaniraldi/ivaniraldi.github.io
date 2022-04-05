@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/ivaniraldi.github.io/static/css/main.44131805.css",
+    "main.js": "/ivaniraldi.github.io/static/js/main.74c8d706.js",
+    "static/js/787.dc6ab4d8.chunk.js": "/ivaniraldi.github.io/static/js/787.dc6ab4d8.chunk.js",
+    "static/media/icons.png": "/ivaniraldi.github.io/static/media/icons.00bcfef84228284c5900.png",
+    "static/media/settings.png": "/ivaniraldi.github.io/static/media/settings.3da19b7cd5b1cdeef2c1.png",
+    "static/media/logo.svg": "/ivaniraldi.github.io/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/ivaniraldi.github.io/index.html",
+    "main.44131805.css.map": "/ivaniraldi.github.io/static/css/main.44131805.css.map",
+    "main.74c8d706.js.map": "/ivaniraldi.github.io/static/js/main.74c8d706.js.map",
+    "787.dc6ab4d8.chunk.js.map": "/ivaniraldi.github.io/static/js/787.dc6ab4d8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.44131805.css",
+    "static/js/main.74c8d706.js"
+  ]
+}
