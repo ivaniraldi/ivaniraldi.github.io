@@ -30,7 +30,7 @@ function App() {
             >
  
               <div class="flex justify-between" >
-                <h1 class="relative flex flex-col text-5xl font-extrabold text-left text-black"> 
+                <h1 class="relative flex flex-col text-4xl font-extrabold text-left text-black"> 
                 <p >Full Stack</p>
                   <p>web.developer</p>
                 </h1>
