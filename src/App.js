@@ -41,7 +41,6 @@ function App() {
               </div>
             </div>
 
-            <div class="my-16 border-b border-black-300 lg:my-24"></div>
 
             <h2 class="text-left text-black-500 xl:text-xl"></h2>
           </div>
