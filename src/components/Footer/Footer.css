@@ -17,31 +17,8 @@
     margin-top: 16px;
 }
 
-/* for mobile */
-#myBtn {
-    position: fixed; /* Fixed/sticky position */
-    width: 41px;
-    bottom: 20px; /* Place the button at the bottom of the page */
-    right: 94%; /* Place the button 30px from the right */
-    z-index: 99; /* Make sure it does not overlap */
-    border: none; /* Remove borders */
-    outline: none; /* Remove outline */
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.285);
-    background-color: rgb(202, 74, 238); /* Set a background color */
-    color: rgb(204, 204, 204); /* Text color */
-    cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 10px; /* Some padding */
-    border-radius: 100%; /* Rounded corners */
-    font-size: 18px; /* Increase font size */
-  }
-  
-  #myBtn:hover {
-    background-color: rgba(96, 17, 132, 0.524); /* Add a dark-grey background on hover */
-  }
     @media screen and (max-width: 767px) {
-        #myBtn{
-            right: 90%;
-        }
+
         .whatsapp-icon {
             margin-top: 10px;
         }
@@ -52,5 +29,6 @@
             bottom: 20px;
             right: 20px;
             font-size: 22px;
+            opacity: 70%;
         }
     }

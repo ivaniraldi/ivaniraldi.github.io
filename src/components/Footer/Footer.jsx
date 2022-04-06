@@ -55,7 +55,6 @@ export default function Footer() {
                     <a href="https://wa.me/+541137574004" class="whatsapp_float" target="_blank" rel="noopener noreferrer">
                         <i class="fa fa-whatsapp whatsapp-icon"></i>
                     </a>
-                    <a id="myBtn"href="#head">&nbsp;^</a>
         </section>
     )
 }
