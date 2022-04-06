@@ -18,19 +18,6 @@
 }
 
 /* for mobile */
-@media screen and (max-width: 767px) {
-    .whatsapp-icon {
-        margin-top: 10px;
-    }
-
-    .whatsapp_float {
-        width: 40px;
-        height: 40px;
-        bottom: 20px;
-        right: 10px;
-        font-size: 22px;
-    }
-}
 #myBtn {
     position: fixed; /* Fixed/sticky position */
     width: 41px;
@@ -51,3 +38,19 @@
   #myBtn:hover {
     background-color: rgba(96, 17, 132, 0.524); /* Add a dark-grey background on hover */
   }
+    @media screen and (max-width: 767px) {
+        #myBtn{
+            right: 90%;
+        }
+        .whatsapp-icon {
+            margin-top: 10px;
+        }
+    
+        .whatsapp_float {
+            width: 40px;
+            height: 40px;
+            bottom: 20px;
+            right: 20px;
+            font-size: 22px;
+        }
+    }
