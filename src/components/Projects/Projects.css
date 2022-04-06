@@ -11,3 +11,10 @@
     background-image: url("./p3.png");
     border: 5px solid slateblue
 }
+@media screen and (max-width: 767px) {
+
+    #projects{
+        padding: 15px;
+        margin-left: 10px;
+    }
+}

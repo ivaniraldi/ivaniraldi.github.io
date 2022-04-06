@@ -11,11 +11,11 @@ function App() {
   return (
     <>
       <div className='pp'>
-    <NavBar/>
+      <NavBar/>
        <Home/>
        <Skills/>
        <Projects/>
-       <About/>
+       <About></About>
        <Contact/>
        <Footer/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.0/alpine.js"></script>
