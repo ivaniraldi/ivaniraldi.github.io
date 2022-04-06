@@ -1,0 +1,13 @@
+#p1{
+    background-image: url("./p1.png");
+    border: 5px solid slateblue
+    ;
+}
+#p2{
+    background-image: url("./p2.png");
+    border: 5px solid slateblue
+}
+#p3{
+    background-image: url("./p3.png");
+    border: 5px solid slateblue
+}
