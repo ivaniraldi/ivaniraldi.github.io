@@ -76,7 +76,7 @@ export default function Contact() {
           });
       };
     return (
-        <div className="py-20 bg-none" id='projects'>
+        <div className="py-20 bg-none" id='contact'>
         <div className="container max-w-6xl mx-auto">
         <form className="w-full max-w-lg" id="contact-form" ref={form} onSubmit={sendEmail}>
             <div className="flex flex-wrap -mx-3 mb-6">

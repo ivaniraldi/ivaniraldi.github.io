@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Home() {
     return (
-        <section className="flex items-center justify-center py-10 text-white bg-none sm:py-16 md:py-24 lg:py-32">
+        <section className="flex items-center justify-center py-10 text-white bg-none sm:py-16 md:py-24 lg:py-32" >
             <div className="relative max-w-3xl px-10 text-center text-white auto lg:px-0">
                 <div className="flex flex-col w-full md:flex-row">
                     <div className="flex justify-between">

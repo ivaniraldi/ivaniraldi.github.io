@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function NavBar() {
     return (
-        <section id="head" className="w-full px-8 text-black-700 bg-none">
+        <section id="head" className="w-full px-8 text-black-700 bg-none" >
             <div className="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
                 <div className="relative flex flex-col md:flex-row">
                     <a href="#head" className="flex items-center mb-5 font-medium text-black-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
