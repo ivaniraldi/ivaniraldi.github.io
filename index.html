@@ -1,148 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Windows 95</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            font-size: 20px;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .bios-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .bios-header {
+            margin-bottom: 20px;
+        }
+        
+        .bios-content {
+            margin-bottom: 20px;
+        }
+        
+        .bios-line {
+            margin-bottom: 8px;
+            opacity: 0;
+            transition: opacity 0.1s;
+            line-height: 1.4;
+        }
+        
+        .bios-line.visible {
+            opacity: 1;
+        }
+        
+        .bios-line.error {
+            color: #ff0000;
+        }
+        
+        .bios-footer {
+            margin-top: 20px;
+        }
+        
+        .loading-bar {
+            width: 100%;
+            height: 2px;
+            background-color: #000;
+            border: 1px solid #ffffff;
+            margin-top: 10px;
+            position: relative;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            background-color: #ffffff;
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        .windows-logo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .windows-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .energy-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: right;
+            width: 200px;
+        }
+        
+        .energy-logo img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .context-menu {
+            position: absolute;
+            background-color: #c0c0c0;
+            border: 2px outset white;
+            padding: 2px;
+            z-index: 1000;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .context-menu-item {
+            padding: 4px 20px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .context-menu-item:hover {
+            background-color: #000080;
+            color: white;
+        }
+    </style>
+</head>
 <body>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pagina de Ivan iraldi</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-  </head>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand mx-4" href="./index.html">Inicio</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="./about.html">Acerca de mi</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-      <div class="card m-4">
-        <div class="card-header">
-          Experiencia
+    <div class="bios-container">
+        <div class="bios-header">
+            <div class="bios-line">Phoenix - AwardBIOS v6.00PG, An Energy Star Ally</div>
+            <div class="bios-line">Copyright (C) 1984-1995, Phoenix Technologies, LTD</div>
+            <div class="bios-line">ASUS A8N-SLI Premium ACPI BIOS Revision 1023-002</div>
         </div>
-        <div class="card-body bg-info text-white">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-      <div class="card m-4">
-        <div class="card-header bg-info text-white">
-          Educacion
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-    <div class="card m-4">
-      <div class="card-header">Experiencia</div>
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-      </div>
+        
+        <div class="bios-content">
+            <div class="bios-line">Main Processor : AMD Athlon(tm) 64 Processor 7000+</div>
+            <div class="bios-line">Memory Testing : 16384K OK (Installed Memory)</div>
+            <div class="bios-line">Chipset Model : nForce 9</div>
+            <div class="bios-line">Primary IDE Master : WDC WD2500J-22HC 6.00.100</div>
+            <div class="bios-line error">Primary IDE Slave : Media Error</div>
+            <div class="bios-line">Secondary IDE Master : None</div>
+            <div class="bios-line error">Secondary IDE Slave : Media Error</div>
+            <div class="bios-line error">Error 0211: Keyboard not found</div>
+            <div class="bios-line error">Error 0242: Battery Failure</div>
+            <div class="bios-line error">Error 0201: Primary Slave Hard Disc Error</div>
+            <div class="bios-line"></div>
+            <div class="bios-line">Press F1 to continue, DEL to enter SETUP</div>
+            <div class="bios-line">12/08/1995-NF-CK804-A8NSLI-P-00</div>
     </div>
-    <div class="card m-4">
-      <div class="card-header">Educacion</div>
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text text-danger">Edgar estuvo aqui</p>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-      </div>
+
+        <div class="energy-logo">
+            <img src="src/assets/images/energy-star.png" alt="Energy Star Logo">
+        </div>
+
+        <div class="bios-footer">
+            <div class="bios-line">Loading Operating System...</div>
+            <div class="loading-bar">
+                <div class="loading-progress" id="progress"></div>
+            </div>
+        </div>
     </div>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-      repudiandae earum amet eos consectetur dolores inventore a ipsum, ab
-      praesentium minima ipsa quaerat harum molestiae quis, ipsam ex.
-      Laudantium, deleniti!
-    </p>
 
-    <footer
-      class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
-    >
-      <div class="col-md-4 d-flex align-items-center">
-        <a
-          href="/"
-          class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
-        >
-          <svg class="bi" width="30" height="24">
-            <use xlink:href="#bootstrap"></use>
-          </svg>
-        </a>
-        <span class="mb-3 mb-md-0 text-muted"
-          >© 2022 Ivan, Todos los derechos reservados.</span
-        >
-      </div>
+    <div class="windows-logo" id="windows-logo">
+        <img src="src/assets/images/boot-img.gif" alt="Windows 95">
+    </div>
 
-      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <li class="ms-3">
-          <a class="text-muted" href="#"
-            ><svg class="bi" width="24" height="24">
-              <use xlink:href="#twitter"></use></svg
-          ></a>
-        </li>
-        <li class="ms-3">
-          <a class="text-muted" href="#"
-            ><svg class="bi" width="24" height="24">
-              <use xlink:href="#instagram"></use></svg
-          ></a>
-        </li>
-        <li class="ms-3">
-          <a class="text-muted" href="#"
-            ><svg class="bi" width="24" height="24">
-              <use xlink:href="#facebook"></use></svg
-          ></a>
-        </li>
-      </ul>
-    </footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const progress = document.getElementById('progress');
+            const windowsLogo = document.getElementById('windows-logo');
+            const biosLines = document.querySelectorAll('.bios-line');
+            let currentLine = 0;
+            
+            // Mostrar líneas de la BIOS una por una con tiempo aleatorio
+            const showNextLine = () => {
+                if (currentLine < biosLines.length) {
+                    biosLines[currentLine].classList.add('visible');
+                    currentLine++;
+                    
+                    // Tiempo aleatorio entre 30ms y 100ms (más rápido)
+                    const randomDelay = Math.floor(Math.random() * 71) + 30;
+                    setTimeout(showNextLine, randomDelay);
+                }
+            };
+            
+            showNextLine();
+            
+            // Simular carga del BIOS
+            let width = 0;
+            const interval = setInterval(() => {
+                width += 0.5; // Más rápido
+                progress.style.width = width + '%';
+                
+                if (width >= 100) {
+                    clearInterval(interval);
+                    
+                    // Mostrar logo de Windows
+                    setTimeout(() => {
+                        document.body.style.backgroundColor = '#000000';
+                        document.querySelector('.bios-container').style.display = 'none';
+                        windowsLogo.style.display = 'flex';
+                        
+                        // Reproducir sonido de inicio
+                        const audio = new Audio('src/assets/sounds/startup.mp3');
+                        audio.play().catch(error => console.log('Error al reproducir el sonido:', error));
+                        
+                        // Redirigir a app.html después de 3 segundos
+                        setTimeout(() => {
+                            window.location.href = 'app.html';
+                        }, 3000);
+                    }, 1000); // Reducido a 1 segundo
+                }
+            }, 20);
+        });
+    </script>
+</body>
 </html>

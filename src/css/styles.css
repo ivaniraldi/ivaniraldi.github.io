@@ -1,0 +1,592 @@
+@font-face {
+    font-family: 'MS Sans Serif';
+    src: url('../fonts/sans-seriff.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MS Sans Serif';
+    src: url('../fonts/sans-seriff.ttf') format('ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'MS Sans Serif', sans-serif;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'MS Sans Serif', sans-serif;
+    background-color: #000000;
+    background-image: url('../assets/images/background.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.desktop {
+    flex: 1;
+    position: relative;
+    padding: 20px;
+    overflow: hidden;
+    padding-bottom: 48px;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid transparent;
+}
+
+.icon:hover {
+    background-color: #000080;
+    border: 1px dotted white;
+}
+
+.icon:hover .icon-text {
+    color: white;
+}
+
+.icon img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 5px;
+}
+
+.icon-text {
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.window {
+    position: absolute;
+    background-color: #c0c0c0;
+    border: 2px outset #dfdfdf;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    min-width: 300px;
+    display: none;
+    resize: both;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.window.active {
+    z-index: 10;
+}
+
+.title-bar {
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: white;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: move;
+}
+
+.title-bar.inactive {
+    background: linear-gradient(to right, #808080, #c0c0c0);
+    color: #d0d0d0;
+}
+
+.title-bar-text {
+    display: inline-block;
+    margin-right: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title-bar-controls {
+    display: flex;
+}
+
+.title-bar-controls button {
+    width: 16px;
+    height: 14px;
+    border: 1px outset white;
+    background-color: #c0c0c0;
+    margin-left: 2px;
+    font-size: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.title-bar-controls button:active {
+    border-style: inset;
+}
+
+.window-content {
+    padding: 0;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 18px);
+    overflow: auto;
+}
+
+.button {
+    padding: 5px 10px;
+    background-color: #c0c0c0;
+    border: 2px outset white;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.button:active {
+    border-style: inset;
+}
+
+.taskbar {
+    height: 28px;
+    background-color: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.start-button {
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+.start-button:hover {
+    background-color: #000080;
+    border: 1px solid #ffffff;
+}
+
+.start-button.active {
+    background-color: #000080;
+    border: 1px solid #ffffff;
+}
+
+.start-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+}
+
+.start-text {
+    color: black;
+    font-weight: bold;
+}
+
+.taskbar-divider {
+    width: 2px;
+    height: 20px;
+    background-color: #808080;
+    margin: 0 4px;
+}
+
+.taskbar-items {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.taskbar-item {
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+.taskbar-item:hover {
+    background-color: #000080;
+    border: 1px solid #ffffff;
+}
+
+.taskbar-item.active {
+    background-color: #000080;
+    border: 1px solid #ffffff;
+}
+
+.taskbar-item img {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
+
+.taskbar-item span {
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.taskbar-time {
+    padding: 2px 4px;
+    color: #ffffff;
+    font-size: 12px;
+    border: 1px solid transparent;
+}
+
+.window-body {
+    margin: 8px;
+}
+
+.card {
+    border: 2px inset #dfdfdf;
+    background-color: white;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.card-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-pic {
+    float: right;
+    margin: 0 0 20px 20px;
+    border: 2px inset #dfdfdf;
+    padding: 5px;
+    background-color: white;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+/* Start Menu Styles */
+.start-menu {
+    position: fixed;
+    bottom: 28px;
+    left: 0;
+    width: 210px;
+    background-color: #c0c0c0;
+    border: 2px outset white;
+    display: none;
+    z-index: 1001;
+}
+
+.start-menu-header {
+    height: 100%;
+    width: 37px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, #000080, #1084d0);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.start-menu-header-text {
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transform: rotate(-90deg);
+    white-space: nowrap;
+    letter-spacing: 1px;
+    transform-origin: center;
+    margin-top: 50px;
+}
+
+.start-menu-items {
+    margin-left: 37px;
+    padding: 2px 0;
+}
+
+.start-menu-item {
+    padding: 4px 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+}
+
+.start-menu-item:hover {
+    background-color: #000080;
+    color: white;
+}
+
+.start-menu-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.start-menu-divider {
+    height: 1px;
+    background-color: #808080;
+    margin: 3px 0;
+}
+
+.start-menu-submenu-arrow {
+    margin-left: auto;
+}
+
+/* Explorer Styles */
+.explorer-toolbar {
+    display: flex;
+    padding: 2px;
+    border-bottom: 1px solid #808080;
+    flex-wrap: wrap;
+}
+
+.explorer-toolbar-button {
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    margin-right: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.explorer-toolbar-button:hover {
+    border: 1px outset white;
+    background-color: #c0c0c0;
+}
+
+.explorer-toolbar-button img {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+}
+
+.explorer-toolbar-separator {
+    width: 1px;
+    height: 22px;
+    background-color: #808080;
+    margin: 0 4px;
+}
+
+.explorer-address-bar {
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    border-bottom: 1px solid #808080;
+}
+
+.explorer-address-label {
+    margin-right: 5px;
+}
+
+.explorer-address-input {
+    flex: 1;
+    border: 1px inset white;
+    background-color: white;
+    padding: 2px 4px;
+    height: 21px;
+    font-size: 12px;
+}
+
+.explorer-content {
+    padding: 20px;
+    background-color: white;
+    height: calc(100% - 80px);
+    overflow: auto;
+}
+
+.explorer-content h3 {
+    color: #000080;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.explorer-content p {
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.explorer-status-bar {
+    display: flex;
+    padding: 2px 4px;
+    border-top: 1px solid #808080;
+    font-size: 11px;
+}
+
+.file-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75px;
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    float: left;
+}
+
+.file-icon:hover {
+    background-color: #000080;
+    border: 1px dotted white;
+}
+
+.file-icon:hover .file-name {
+    color: white;
+}
+
+.file-icon img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 4px;
+}
+
+.file-name {
+    text-align: center;
+    font-size: 11px;
+    word-wrap: break-word;
+    width: 100%;
+    color: black;
+}
+
+.profile-content {
+    padding: 20px;
+    background-color: white;
+    height: 100%;
+    overflow: auto;
+}
+
+.profile-content h2 {
+    color: #000080;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.profile-content p {
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+/* Context Menu */
+.context-menu {
+    position: absolute;
+    background-color: #c0c0c0;
+    border: 2px outset white;
+    padding: 2px;
+    display: none;
+    z-index: 1002;
+}
+
+.context-menu-item {
+    padding: 4px 20px;
+    cursor: pointer;
+}
+
+.context-menu-item:hover {
+    background-color: #000080;
+    color: white;
+}
+
+.context-menu-divider {
+    height: 1px;
+    background-color: #808080;
+    margin: 3px 0;
+}
+
+/* Menú de ventana */
+.window-menu {
+    display: flex;
+    background-color: #c0c0c0;
+    border-bottom: 1px solid #808080;
+    padding: 2px;
+    height: 20px;
+}
+
+.window-menu-item {
+    padding: 2px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    border: 1px solid transparent;
+    height: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.window-menu-item:hover {
+    border: 1px outset white;
+    background-color: #c0c0c0;
+}
+
+.window-menu-item:active {
+    border: 1px inset white;
+}
+
+/* Grid de iconos */
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 75px);
+    gap: 20px;
+    padding: 10px;
+    background-color: white;
+    height: 100%;
+    overflow: auto;
+}
+
+/* Estilos para el botón de redimensionamiento */
+.resize-handle {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    bottom: 0;
+    right: 0;
+    cursor: nwse-resize;
+    background: linear-gradient(135deg, transparent 50%, #808080 50%);
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .window {
+        width: 90% !important;
+        left: 5% !important;
+    }
+    
+    .icon {
+        width: 60px;
+    }
+    
+    .file-icon {
+        width: 60px;
+    }
+    
+    .taskbar-item {
+        min-width: 80px;
+    }
+    
+    .start-menu {
+        width: 150px;
+    }
+} 

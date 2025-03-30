@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iraldi - Windows 95</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+    <div class="desktop">
+        <!-- Los iconos y ventanas se cargarán dinámicamente con JavaScript -->
+    </div>
+
+    <script type="module">
+        import DesktopIcon from './src/components/DesktopIcon.js';
+        import WindowComponent from './src/components/Window.js';
+        import FileExplorer from './src/components/FileExplorer.js';
+        import { CONFIG } from './src/js/config.js';
+        import { soundManager } from './src/js/sounds.js';
+        import { contextMenu } from './src/js/contextMenu.js';
+        import { taskbar } from './src/js/taskbar.js';
+        import './src/js/app.js';
+
+        // Configuración de iconos del escritorio
+        const desktopIcons = [
+            new DesktopIcon('profile-icon', 'Mi Perfil', 'src/assets/images/w98_address_book_user.ico', 'profile'),
+            new DesktopIcon('portfolio-icon', 'Portafolio', 'src/assets/images/w95_59.ico', 'portfolio'),
+            new DesktopIcon('company-icon', 'Webrush', 'src/assets/images/w95_42.ico', 'company'),
+            new DesktopIcon('invaders-icon', 'Space Invaders', 'src/assets/images/w98_console_prompt.ico', 'invaders'),
+            new DesktopIcon('mypc-icon', 'Mi PC', 'src/assets/images/w95_16.ico', 'mypc'),
+            new DesktopIcon('documents-icon', 'Mis Documentos', 'src/assets/images/w95_21.ico', 'documents')
+        ];
+
+        // Configuración de ventanas
+        const windows = [
+            new WindowComponent('profile', 'Mi Perfil - Iraldi', `
+                <div class="window-menu">
+                    <div class="window-menu-item">Archivo</div>
+                    <div class="window-menu-item">Editar</div>
+                    <div class="window-menu-item">Ver</div>
+                    <div class="window-menu-item">Ayuda</div>
+                </div>
+                <div class="profile-content">
+                    <img class="profile-pic" src="src/assets/images/profile-pic.png" alt="Perfil">
+                    <h2>Iraldi</h2>
+                    <p>Desarrollador web full-stack y CEO de Webrush Brasil, especializado en crear soluciones digitales innovadoras con más de 5 años de experiencia.</p>
+                    <div class="button" data-window="portfolio">Visitar mi portafolio</div>
+                </div>
+            `, { width: '400px', height: '300px', top: '50px', left: '50px' }),
+
+            new WindowComponent('portfolio', 'Portafolio', `
+                <div class="window-menu">
+                    <div class="window-menu-item">Archivo</div>
+                    <div class="window-menu-item">Editar</div>
+                    <div class="window-menu-item">Ver</div>
+                    <div class="window-menu-item">Ayuda</div>
+                </div>
+                <div class="explorer-content">
+                    <h3>Mi Portafolio Personal</h3>
+                    <p>Visita mi portafolio para ver mis proyectos y habilidades.</p>
+                    <div class="button" onclick="window.open('https://iraldidev.vercel.app', '_blank')">Visitar mi portafolio</div>
+                </div>
+            `, { width: '450px', height: '350px', top: '80px', left: '100px' }),
+
+            new FileExplorer('company', 'Webrush Brasil', 'C:\\Webrush', [
+                { name: 'pagina_web.html', icon: 'src/assets/images/w98_html.ico' },
+                { name: 'description.txt', icon: 'src/assets/images/w95_60.ico' }
+            ], { width: '500px', height: '350px', top: '120px', left: '150px' }),
+
+            new FileExplorer('mypc', 'Mi PC', 'Mi PC', [
+                { name: '(C:) Disco duro', icon: 'src/assets/images/w95_9.ico' },
+                { name: '(E:) Disco Extraible', icon: 'src/assets/images/w95_10.ico' },
+                { name: '(A:) Disquete', icon: 'src/assets/images/w95_7.ico' },
+                { name: 'Impresoras', icon: 'src/assets/images/w95_8.ico' }
+            ], { width: '480px', height: '350px', top: '70px', left: '120px' }),
+
+            new FileExplorer('documents', 'Mis Documentos', 'C:\\Mis Documentos', [
+                { name: 'curriculum.doc', icon: 'src/assets/images/w95_2.ico' },
+                { name: 'proyectos.xls', icon: 'src/assets/images/w95_37.ico' },
+                { name: 'notas.txt', icon: 'src/assets/images/w98_address_book.ico' },
+                { name: 'presentacion.ppt', icon: 'src/assets/images/w95_24.ico' }
+            ], { width: '480px', height: '350px', top: '90px', left: '140px' })
+        ];
+
+        // Renderizar iconos y ventanas
+        const desktop = document.querySelector('.desktop');
+        
+        // Renderizar iconos primero
+        desktopIcons.forEach(icon => {
+            desktop.insertAdjacentHTML('beforeend', icon.render());
+            icon.initialize(); // Initialize context menu for each icon
+        });
+
+        // Renderizar ventanas después
+        windows.forEach(window => {
+            desktop.insertAdjacentHTML('beforeend', window.render());
+            window.initialize();
+        });
+
+        // Función para mostrar una ventana
+        function showWindow(windowId) {
+            const window = document.getElementById(`${windowId}-window`);
+            if (window) {
+                window.style.display = 'block';
+                window.style.zIndex = '10';
+                const titleBar = window.querySelector('.title-bar-text');
+                if (titleBar) {
+                    taskbar.addWindow(windowId, titleBar.textContent);
+                }
+            }
+        }
+
+        // Manejar clic en iconos del escritorio
+        document.addEventListener('click', (e) => {
+            const iconElement = e.target.closest('.icon');
+            if (iconElement) {
+                const windowId = iconElement.dataset.window;
+                if (windowId) {
+                    showWindow(windowId);
+                }
+            }
+        });
+
+        // Manejar clic en elementos de FileExplorer
+        document.addEventListener('click', (e) => {
+            const fileIcon = e.target.closest('.file-icon');
+            if (fileIcon) {
+                const fileName = fileIcon.querySelector('.file-name').textContent;
+                const parentWindow = fileIcon.closest('.window');
+                if (parentWindow) {
+                    const windowId = parentWindow.id.replace('-window', '');
+                    if (fileName === 'Impresoras') {
+                        window.print();
+                    } else if (fileName === 'pagina_web.html') {
+                        window.open('https://webrushbrasil.com.br', '_blank');
+                    } else if (fileName === '(C:) Disco duro') {
+                        showWindow('mypc');
+                    } else if (fileName === '(E:) Disco Extraible') {
+                        showWindow('mypc');
+                    } else if (fileName === '(A:) Disquete') {
+                        showWindow('mypc');
+                    } else if (fileName === 'curriculum.doc') {
+                        showWindow('documents');
+                    } else if (fileName === 'proyectos.xls') {
+                        showWindow('documents');
+                    } else if (fileName === 'notas.txt') {
+                        showWindow('documents');
+                    } else if (fileName === 'presentacion.ppt') {
+                        showWindow('documents');
+                    }
+                }
+            }
+        });
+
+        // Manejar clic en botones de ventana
+        document.addEventListener('click', (e) => {
+            const button = e.target.closest('.button');
+            if (button && button.dataset.window) {
+                showWindow(button.dataset.window);
+            }
+        });
+
+        // Manejar clic derecho en el escritorio
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            const target = e.target;
+
+            // Si el clic fue en el escritorio y no en un icono
+            if (target.classList.contains('desktop') || target.closest('.desktop') && !target.closest('.icon')) {
+                showDesktopContextMenu(e.clientX, e.clientY);
+            }
+        });
+
+        function showDesktopContextMenu(x, y) {
+            const existingMenu = document.querySelector('.context-menu');
+            if (existingMenu) existingMenu.remove();
+
+            const menu = document.createElement('div');
+            menu.className = 'context-menu';
+            menu.style.top = `${y}px`;
+            menu.style.left = `${x}px`;
+            menu.innerHTML = `
+                <div class="context-menu-item" data-action="refresh">Actualizar</div>
+                <div class="context-menu-item" data-action="new-folder">Nueva Carpeta</div>
+                <div class="context-menu-item" data-action="properties">Propiedades</div>
+            `;
+            document.body.appendChild(menu);
+
+            menu.addEventListener('click', (e) => {
+                const action = e.target.dataset.action;
+                if (action === 'refresh') {
+                    location.reload();
+                } else if (action === 'new-folder') {
+                    alert('Nueva carpeta creada.');
+                } else if (action === 'properties') {
+                    alert('Propiedades del escritorio.');
+                }
+                menu.remove();
+            });
+
+            document.addEventListener('click', () => menu.remove(), { once: true });
+        }
+    </script>
+</body>
+</html>

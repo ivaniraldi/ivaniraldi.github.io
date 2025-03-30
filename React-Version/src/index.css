@@ -1,0 +1,334 @@
+@import "tailwindcss";
+
+body {
+  background-color: #008080;
+  background-image: url('/src/assets/images/desktop_bg.jpg');
+  background-size: cover;
+  background-position: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'MS Sans Serif', sans-serif;
+}
+
+/* Clases de ventana */
+.window {
+  position: absolute;
+  background-color: #c0c0c0;
+  border: 1px solid #ffffff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  box-shadow: 1px 1px 0 0 #000000;
+  min-width: 200px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.window.maximized {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Barra de título */
+.title-bar {
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: white;
+  padding: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 0.75rem;
+  cursor: move;
+  height: 20px;
+}
+
+.title-bar-text {
+  display: inline-block;
+  margin-right: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 2px;
+}
+
+.title-bar-controls {
+  display: flex;
+  gap: 1px;
+}
+
+.title-bar-controls button {
+  width: 16px;
+  height: 14px;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  background-color: #c0c0c0;
+  margin-left: 0;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.title-bar-controls button:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.window-content {
+  padding: 4px;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 20px);
+  overflow: auto;
+  background-color: #c0c0c0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.window-content > * {
+  flex-shrink: 0;
+}
+
+.window-content::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.window-content::-webkit-scrollbar-track {
+  background: #c0c0c0;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+  background: #c0c0c0;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+/* Barra de tareas */
+.taskbar {
+  height: 28px;
+  background-color: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.start-button {
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+  cursor: pointer;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  background-color: #c0c0c0;
+  font-weight: bold;
+  font-size: 0.75rem;
+  height: 20px;
+}
+
+.start-button:hover {
+  background-color: #c0c0c0;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.start-button.active {
+  background-color: #c0c0c0;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.taskbar-item {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  background-color: #c0c0c0;
+  min-width: 100px;
+  height: 22px;
+  position: relative;
+  margin-left: 2px;
+  font-size: 0.75rem;
+}
+
+.taskbar-item:hover {
+  background-color: #c0c0c0;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.taskbar-item.active {
+  background-color: #c0c0c0;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+/* Iconos */
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75px;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+  padding: 2px;
+  border: 1px solid transparent;
+}
+
+.icon:hover {
+  background-color: #000080;
+  border: 1px dotted white;
+}
+
+.icon-text {
+  color: white;
+  text-align: center;
+  font-size: 0.75rem;
+  text-shadow: 1px 1px 0 #000;
+  max-width: 100%;
+  word-break: break-word;
+  margin-top: 2px;
+}
+
+.file-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75px;
+  margin: 0;
+  padding: 2px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  float: left;
+}
+
+.file-icon:hover {
+  background-color: #000080;
+  border: 1px dotted white;
+}
+
+.file-name {
+  text-align: center;
+  font-size: 0.75rem;
+  word-break: break-word;
+  width: 100%;
+  color: black;
+  margin-top: 2px;
+}
+
+/* Estilos adicionales para Windows 95 */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #c0c0c0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c0c0c0;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+/* Estilos para menús y diálogos */
+.menu {
+  background-color: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  padding: 2px;
+}
+
+.menu-item {
+  padding: 2px 20px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.menu-item:hover {
+  background-color: #000080;
+  color: white;
+}
+
+/* Estilos para botones */
+.button {
+  background-color: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  padding: 2px 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  min-width: 75px;
+  height: 23px;
+}
+
+.button:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+/* Estilos para inputs */
+.input {
+  background-color: white;
+  border: 1px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  padding: 2px;
+  font-size: 0.75rem;
+  height: 20px;
+}
+
+.input:focus {
+  border-color: #000080;
+  outline: none;
+}
+
+/* Separador de la barra de tareas */
+.taskbar-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #808080;
+  margin: 0 2px;
+  border-left: 1px solid #ffffff;
+}
+
+.resize-handle {
+  position: absolute;
+  background-color: transparent;
+  z-index: 10;
+  transition: background-color 0.2s;
+}
+
+.resize-handle:hover {
+  background-color: rgba(0, 0, 128, 0.1);
+} 

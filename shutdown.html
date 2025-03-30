@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo apagado</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .shutdown-message {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .power-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #333;
+            border: 3px solid #666;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        .power-button:hover {
+            background-color: #444;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        .power-button:active {
+            background-color: #555;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+        
+        .power-symbol {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+        
+        .power-symbol::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 25px;
+            background-color: #0f0;
+            transform: translateX(-50%);
+        }
+        
+        .power-symbol::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 4px solid #0f0;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+        }
+        
+        .power-text {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="shutdown-message">
+        <h1>El equipo se ha apagado</h1>
+        <p>Ahora puede apagar su equipo de forma segura.</p>
+    </div>
+    
+    <div class="power-button" id="power-button">
+        <div class="power-symbol"></div>
+    </div>
+    
+    <div class="power-text">
+        Presione para encender
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const powerButton = document.getElementById('power-button');
+            
+            powerButton.addEventListener('click', () => {
+                // Efecto de encendido
+                powerButton.style.backgroundColor = '#0f0';
+                powerButton.style.boxShadow = '0 0 30px rgba(0, 255, 0, 0.8)';
+                
+                // Redirigir a la página de inicio después de un breve retraso
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
