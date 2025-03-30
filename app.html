@@ -23,12 +23,12 @@
 
         // Configuración de iconos del escritorio
         const desktopIcons = [
+            new DesktopIcon('mypc-icon', 'Mi PC', 'src/assets/images/w95_16.ico', 'mypc'),
             new DesktopIcon('profile-icon', 'Mi Perfil', 'src/assets/images/w98_address_book_user.ico', 'profile'),
             new DesktopIcon('portfolio-icon', 'Portafolio', 'src/assets/images/w95_59.ico', 'portfolio'),
             new DesktopIcon('company-icon', 'Webrush', 'src/assets/images/w95_42.ico', 'company'),
-            new DesktopIcon('invaders-icon', 'Space Invaders', 'src/assets/images/w98_console_prompt.ico', 'invaders'),
-            new DesktopIcon('mypc-icon', 'Mi PC', 'src/assets/images/w95_16.ico', 'mypc'),
-            new DesktopIcon('documents-icon', 'Mis Documentos', 'src/assets/images/w95_21.ico', 'documents')
+            new DesktopIcon('documents-icon', 'Mis Documentos', 'src/assets/images/w95_21.ico', 'documents'),
+            new DesktopIcon('windows-98', 'Windows 98', 'src/assets/images/w95_40.ico', 'react-version'),
         ];
 
         // Configuración de ventanas
@@ -71,7 +71,7 @@
                 { name: '(C:) Disco duro', icon: 'src/assets/images/w95_9.ico' },
                 { name: '(E:) Disco Extraible', icon: 'src/assets/images/w95_10.ico' },
                 { name: '(A:) Disquete', icon: 'src/assets/images/w95_7.ico' },
-                { name: 'Impresoras', icon: 'src/assets/images/w95_8.ico' }
+                { name: 'Impresoras', icon: 'src/assets/images/w98_printer_slim.ico' }
             ], { width: '480px', height: '350px', top: '70px', left: '120px' }),
 
             new FileExplorer('documents', 'Mis Documentos', 'C:\\Mis Documentos', [
@@ -115,10 +115,19 @@
             const iconElement = e.target.closest('.icon');
             if (iconElement) {
                 const windowId = iconElement.dataset.window;
-                if (windowId) {
+                if (windowId === 'react-version') {
+                    window.open('https://ivaniraldi-github-io.vercel.app/', '_self'); // Correct path to index.html
+                } else if (windowId) {
                     showWindow(windowId);
                 }
             }
+        });
+
+        // Ensure soundManager paths are correct
+        soundManager.loadSounds({
+            startup: 'src/assets/sounds/startup.mp3',
+            shutdown: 'src/assets/sounds/shutdown.mp3',
+            click: 'src/assets/sounds/click.mp3'
         });
 
         // Manejar clic en elementos de FileExplorer

@@ -14,7 +14,7 @@ class Taskbar {
         taskbar.className = 'taskbar';
         taskbar.innerHTML = `
             <div class="start-button">
-                <img src="${CONFIG.ASSETS.IMAGES}/w95_1.ico" alt="Start">
+                <img src="${CONFIG.ASSETS.IMAGES}/w95_40.ico" alt="Start">
                 <span class="start-text">Inicio</span>
             </div>
             <div class="taskbar-divider"></div>
