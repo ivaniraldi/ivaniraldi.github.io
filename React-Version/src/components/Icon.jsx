@@ -148,7 +148,7 @@ function Icon({ id, title, icon, windowId, type = 'Acceso directo' }) {
               autoFocus
             />
           ) : (
-            <span className="text-[10px] text-white break-words leading-[1]">
+            <span className="text-[10px] font-medium text-white break-words leading-[1]">
               {title}
             </span>
           )}

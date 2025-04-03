@@ -12,7 +12,15 @@ import {
   webrush,
   miPc,
   misDocumentos,
-  papeleraLlena
+  justpostit,
+  metatagenerator,
+  cookieclicker,
+  goofyahh,
+  wordle,
+  logoInicio,
+  invoicegenpro,
+  papeleraVacia,
+
 } from '../assets/images'
 
 // Constantes para los iconos del escritorio
@@ -49,9 +57,51 @@ const DESKTOP_ICONS = [
   },
   {
     id: 'recycle',
-    title: 'Papelera de Reciclaje',
-    icon: papeleraLlena,
+    title: 'Thrash Bin',
+    icon: papeleraVacia,
     windowId: 'recycle'
+  },
+  {
+    id: 'wordle',
+    title: 'Wordle',
+    icon: wordle,
+    windowId: 'wordle'
+  },
+  {
+    id: 'cookieclicker',
+    title: 'Cookie Clicker clone (on dev)',
+    icon: cookieclicker,
+    windowId: 'cookieclicker'
+  },
+  {
+    id: 'goofyahh',
+    title: 'Goofyahh Page (on dev)',
+    icon: goofyahh,
+    windowId: 'goofyahh'
+  },
+  {
+    id: 'metatagenerator',
+    title: 'MetataGenerator',
+    icon: metatagenerator,
+    windowId: 'metatagenerator'
+  },
+  {
+    id: 'justpostit',
+    title: 'JustPostIt (on dev)',
+    icon: justpostit,
+    windowId: 'justpostit'
+  },
+  {
+    id: 'invoicegenpro',
+    title: 'InvoiceGen.Pro',
+    icon: invoicegenpro,
+    windowId: 'invoicegenpro'
+  },
+  {
+    id: 'win95port',
+    title: 'win95port.exe',
+    icon: logoInicio,
+    windowId: 'win95port'
   }
 ]
 
@@ -59,10 +109,10 @@ const DESKTOP_ICONS = [
 const DesktopIcons = () => {
   const [columns, setColumns] = useState([])
   const iconWidth = 85 // Ancho de cada icono en píxeles
-  const iconHeight = 75 // Alto total de cada icono (incluyendo texto)
-  const gap = 12 // Espacio entre iconos en píxeles
-  const padding = 12 // Padding del contenedor en píxeles
-  const taskbarHeight = 40 // Altura de la barra de tareas en píxeles
+  const iconHeight = 80 // Alto total de cada icono (incluyendo texto)
+  const gap = 17 // Espacio entre iconos en píxeles
+  const padding = 10 // Padding del contenedor en píxeles
+  const taskbarHeight = 50 // Altura de la barra de tareas en píxeles
 
   useEffect(() => {
     const organizeIcons = () => {
@@ -71,7 +121,7 @@ const DesktopIcons = () => {
       const newColumns = []
       let currentColumn = []
       
-      DESKTOP_ICONS.forEach((icon, index) => {
+      DESKTOP_ICONS.forEach((icon) => {
         if (currentColumn.length >= iconsPerColumn) {
           newColumns.push(currentColumn)
           currentColumn = []

@@ -38,7 +38,17 @@ function Portfolio() {
 
   return (
     <div className="p-4">
-      <h2 className="text-sm font-bold text-[#000080] border-b border-[#808080] pb-1 mb-4">Mis Proyectos</h2>
+      <div className="flex justify-between items-center border-b border-[#808080] pb-1 mb-4">
+        <h2 className="text-sm font-bold text-[#000080]">Mis Proyectos</h2>
+        <a 
+          href="https://iraldidev.vercel.app"
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-xs text-[#000080] hover:underline"
+        >
+          Ingresar a mi web-portafolio
+        </a>
+      </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {projects.map((project, index) => (
@@ -91,4 +101,4 @@ function Portfolio() {
   )
 }
 
-export default Portfolio 
+export default Portfolio

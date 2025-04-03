@@ -9,6 +9,13 @@ import Portfolio from './windows/Portfolio'
 import Company from './windows/Company'
 import Documents from './windows/Documents'
 import RecycleBin from './windows/RecycleBin'
+import JustPostIt from './windows/JustPostIt'
+import Wordle from './windows/Wordle'
+import Cookie from './windows/Cookie'
+import MetataGenerator from './windows/MetataGenerator'
+import GoofyAhh from './windows/GoofyAhh'
+import InvoiceGenPro from './windows/InvoiceGenPro'
+import Win95Port from './windows/Win95Port'
 
 function Window({ id, title, isVisible, zIndex, position, children, width, height, minWidth, minHeight, onClose, type, icon }) {
   const { hideWindow, closeWindow, updateWindowPosition, setActiveWindow } = useWindow()
@@ -179,6 +186,21 @@ function Window({ id, title, isVisible, zIndex, position, children, width, heigh
         return <Documents />
       case 'recycle':
         return <RecycleBin />
+      case 'justpostit':
+        return <JustPostIt />
+      case 'metatagenerator':
+        return <MetataGenerator />
+      case 'goofyahh':
+        return <GoofyAhh />
+      case 'wordle':
+        return <Wordle />
+      case 'cookieclicker':
+        return <Cookie />
+      case 'invoicegenpro':
+        return <InvoiceGenPro />
+      case 'win95port':
+        return <Win95Port/>
+
       default:
         return children || (
           <div className="p-4">

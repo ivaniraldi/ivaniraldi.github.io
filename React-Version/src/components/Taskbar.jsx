@@ -173,7 +173,7 @@ function Taskbar({ onShutdown }) {
           onContextMenu={(e) => e.stopPropagation()}
         >
           <div className="start-menu-header bg-[#000080] text-white p-1 text-sm font-bold">
-            <span>Windows 95</span>
+            <span>Windows 98</span>
           </div>
           <div className="start-menu-items p-1">
             <div className="start-menu-item flex items-center gap-2 p-1 hover:bg-[#000080] hover:text-white cursor-pointer" onClick={() => showWindow('profile', 'Mi Perfil')}>

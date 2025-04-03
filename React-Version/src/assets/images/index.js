@@ -14,6 +14,11 @@ import profile from './profile.ico'
 import notas from './notas.ico'
 import hdd from './hdd.ico'
 import diskette from './diskette.ico'
+import justpostit from './justpostit.ico'
+import metatagenerator from './metatagenerator.ico'
+import wordle from './wordle.ico'
+import cookieclicker from './cookieclicker.ico'
+import goofyahh from './goofyahh.ico'
 import txt from './txt.ico'
 import certificados from './certificados.ico'
 import webrush from './webrush.ico'
@@ -29,6 +34,8 @@ import doc from './doc.ico'
 import miPc from './mi_pc.ico'
 import externalHdd from './external_hdd.ico'
 import defaultFile from './default_file.ico'
+import invoicegenpro from './invoicegenpro.ico'
+
 
 export {
   background,
@@ -53,6 +60,12 @@ export {
   papeleraLlena,
   papeleraVacia,
   accesoDirecto,
+  goofyahh,
+  justpostit,
+  invoicegenpro,
+  metatagenerator,
+  wordle,
+  cookieclicker,
   ayuda,
   misDocumentos,
   doc,
