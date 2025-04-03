@@ -53,7 +53,7 @@ class Taskbar {
                     <span class="start-menu-submenu-arrow">▶</span>
                 </div>
                 <div class="start-menu-item" data-action="printers">
-                    <img src="${CONFIG.ASSETS.IMAGES}/w95_17.ico" alt="Impresoras">
+                    <img src="${CONFIG.ASSETS.IMAGES}/w95_7.ico" alt="Impresoras">
                     <span>Impresoras</span>
                 </div>
                 <div class="start-menu-divider"></div>
